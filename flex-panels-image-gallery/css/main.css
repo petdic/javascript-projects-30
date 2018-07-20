@@ -16,6 +16,7 @@ body {
 .panels {
   min-height: 100vh;
   overflow: hidden;
+  display: flex;
 }
 
 .panel {
@@ -32,6 +33,11 @@ body {
   font-size: 20px;
   background-size:cover;
   background-position: center;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .panel1 { background-image:url(../img/witcher1.png);}
@@ -40,11 +46,21 @@ body {
 .panel4 { background-image:url(../img/witcher5.png);}
 .panel5 { background-image:url(../img/witcher2.png);}
 
+/* Flex Children */
 .panel > *{
   margin: 0;
   width: 100%;
-  transition: transform 0.5s;
+  transition: transform 0.5s;  
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.panel > *:first-child { transform: translateY(-100%); }
+.panel.open-active > *:first-child { transform: translateY(0); }
+.panel > *:last-child { transform: translateY(100%); }
+.panel.open-active > *:last-child { transform: translateY(0); }
 
 .panel p {
   text-transform: uppercase;
@@ -57,5 +73,6 @@ body {
 }
 
 .panel.open{
+  flex: 6;
   font-size: 40px;
 }
